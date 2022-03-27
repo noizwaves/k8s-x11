@@ -14,8 +14,7 @@ spec:
     spec:
       containers:
         - name: firefox
-          image: firefox
-          imagePullPolicy: Never
+          image: ghcr.io/noizwaves/firefox:latest
           env:
             - name: DISPLAY
               value: "localhost:0"

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-x11
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-x11
+  template:
+    metadata:
+      labels:
+        app: k8s-x11
+    spec:
+      containers:
+        - name: firefox
+          image: firefox
+          imagePullPolicy: Never
+          env:
+            - name: DISPLAY
+              value: "localhost:0"
+            - name: DISPLAY_WIDTH
+              value: "1920"
+            - name: DISPLAY_HEIGHT
+              value: "1280"
+        - name: novnc
+          image: theasp/novnc:latest
+          env:
+            - name: DISPLAY_WIDTH
+              value: "1920"
+            - name: DISPLAY_HEIGHT
+              value: "1280"
